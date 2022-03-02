@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://kit.fontawesome.com/bb3c8f3d06.js"></script>
+   <link rel="stylesheet" href="style.css">
+   <title>Slider</title>
+</head>
+<body>
+   
+   <div id="app" class="carosello" @mouseover="hover = true" @mouseleave="startInterval()">
+
+
+      <div class="container">
+         <div class="row">
+
+            <div class="main-slide col-8">
+
+               <div v-for="slide in slidesArray" :class="{ 'slide' : true, 'active' : slide.active}">
+                  <img :src="slide.item" alt="">
+
+                  <div class="slide_info">
+                     <h2 class="slide_title">{{ slide.title }}</h2>
+                     <p class="slide_desc">{{ slide.message }}</p>
+                  </div>
+
+               </div>
+
+            </div>
+
+            <div class="slide-menu col-4">
+
+               <div class="slide-items">
+                  <div v-for="(slide, i) in slidesArray" :class="{ 'slide' : true, 'active' : slide.active}" @click="goToSlide(i)">
+                     <img :src="slide.item" alt="">
+                  </div>
+               </div>
+
+               <div class="controls-wrapper">
+                  <div class="control arrow-up" @click="changeImage(true)">
+                     <i class="fa-solid fa-chevron-up"></i>
+                  </div>
+                  <div class="control arrow-down" @click="changeImage(false)">
+                     <i class="fa-solid fa-chevron-down"></i>
+                  </div>
+               </div>
+
+            </div>
+
+         </div>
+      </div>
+
+
+   </div>
+
+   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+   <script src="app.js"></script>
+</body>
+</html>
